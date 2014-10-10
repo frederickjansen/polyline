@@ -9,7 +9,7 @@ class PolylineCodecTestCase(unittest.TestCase):
 
     def test_decode_multiple_points(self):
         d = self.codec.decode('gu`wFnfys@???nKgE??gE?????oK????fE??fE')
-        self.assertSequenceEqual(d, [
+        self.assertEqual(d, [
             (40.641, -8.654),
             (40.641, -8.654),
             (40.641, -8.656),
@@ -26,7 +26,7 @@ class PolylineCodecTestCase(unittest.TestCase):
 
     def test_decode_official_example(self):
         d = self.codec.decode('_p~iF~ps|U_ulLnnqC_mqNvxq`@')
-        self.assertSequenceEqual(d, [
+        self.assertEqual(d, [
             (38.500, -120.200),
             (40.700, -120.950),
             (43.252, -126.453)
@@ -34,7 +34,7 @@ class PolylineCodecTestCase(unittest.TestCase):
 
     def test_decode_single_point(self):
         d = self.codec.decode('gu`wFf`ys@')
-        self.assertSequenceEqual(d, [
+        self.assertEqual(d, [
             (40.641, -8.653)
         ])
 
