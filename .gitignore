@@ -27,6 +27,7 @@ env/
 htmlcov/
 lib/
 lib64/
+MANIFEST
 nosetests.xml
 parts/
 pip-delete-this-directory.txt

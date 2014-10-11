@@ -19,9 +19,11 @@ https://github.com/mapbox/polyline built with Python 2 and 3 support in mind.
 Installation
 ============
 
-`polyline` can be installed using `pip`:
+``polyline`` can be installed using ``pip`` or ``easy_install``::
 
-    pip install polyline
+    $ pip install polyline
+    or
+    $ easy_install polyline
 
 API Documentation
 =================
@@ -31,7 +33,7 @@ Encoding
 
 To get the encoded polyline representation of a given set of coordinates::
 
-    from polyline.codec import PolylineCodec
+    from polyline import PolylineCodec
     PolylineCodec().encode([(38.5, -120.2), (40.7, -120.9), (43.2, -126.4)])
 
 This should return ``_p~iF~ps|U_ulL~ugC_hgN~eq`@``.
@@ -41,7 +43,7 @@ Decoding
 
 To get the set of coordinates reprented by a given encoded polyline string::
 
-    from polyline.codec import PolylineCodec
+    from polyline import PolylineCodec
     PolylineCodec().decode('u{~vFvyys@fS]')
 
 This should return ``[(40.63179, -8.65708), (40.62855, -8.65693)]``.

@@ -9,8 +9,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-import polyline
-
 desc = "A Python implementation of Google's Encoded Polyline Algorithm Format."
 
 with open('README.rst', 'r') as f:
@@ -22,7 +20,7 @@ with open(os.path.join('requirements', 'test.txt'), 'r') as f:
 
 setup(
     name='polyline',
-    version=polyline.__version__,
+    version='1.0',
     description=desc,
     long_description=long_desc,
     author='Bruno M. Custódio',
@@ -35,7 +33,7 @@ setup(
     license='MIT',
     zip_safe=False,
     classifiers=(
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
