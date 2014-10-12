@@ -6,6 +6,6 @@ python:
   - "3.3"
   - "3.4"
 install:
-  - "make --quiet reqs"
+  - "make reqs"
 script:
-  - "make --quiet test"
+  - "make test"
