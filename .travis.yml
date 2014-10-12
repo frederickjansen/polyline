@@ -6,6 +6,6 @@ python:
   - "3.3"
   - "3.4"
 install:
-  - "make --quiet travis-setup"
+  - "make --quiet reqs"
 script:
-  - "make --quiet travis-tests"
+  - "make --quiet test"

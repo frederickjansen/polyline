@@ -1,6 +1,6 @@
 import unittest
 
-from polyline.codec import PolylineCodec
+from polyline import PolylineCodec
 
 
 class PolylineCodecTestCase(unittest.TestCase):

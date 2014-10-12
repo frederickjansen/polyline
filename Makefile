@@ -10,6 +10,6 @@ pep8-tests:
 unit-tests:
 	nosetests
 
-travis-setup: setup-base-dependencies setup-test-dependencies
+reqs: setup-base-dependencies setup-test-dependencies
 
-travis-tests: pep8-tests unit-tests
+test: pep8-tests unit-tests

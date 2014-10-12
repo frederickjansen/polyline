@@ -3,17 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-========
-polyline
-========
-
-.. contents::
-
 Introduction
 ============
 
-A Python implementation of Google's Encoded Polyline Algorithm Format
-(http://goo.gl/PvXf8Y). This is essentially a port of
+``polyline`` is a Python implementation of Google's Encoded Polyline Algorithm
+Format (http://goo.gl/PvXf8Y). It is essentially a port of
 https://github.com/mapbox/polyline built with Python 2 and 3 support in mind.
 
 Installation
