@@ -4,6 +4,9 @@ polyline
 .. image:: https://travis-ci.org/bmcustodio/polyline.svg?branch=master
     :target: https://travis-ci.org/bmcustodio/polyline
 
+.. image:: https://readthedocs.org/projects/polyline/badge/?version=v1.1
+    :target: https://readthedocs.org/projects/polyline/?badge=v1.1
+
 .. image:: https://badge.fury.io/py/polyline.svg
     :target: http://badge.fury.io/py/polyline
 
