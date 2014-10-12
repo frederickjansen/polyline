@@ -20,7 +20,7 @@ with open(os.path.join('requirements', 'test.txt'), 'r') as f:
 
 setup(
     name='polyline',
-    version='1.1-dev',
+    version='1.1',
     description=desc,
     long_description=long_desc,
     author='Bruno M. Custódio',
@@ -33,7 +33,7 @@ setup(
     license='MIT',
     zip_safe=False,
     classifiers=(
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
