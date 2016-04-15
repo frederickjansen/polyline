@@ -140,40 +140,35 @@ class PolylineCodecTestCase(unittest.TestCase):
         def generator():
             while True:
                 coords = []
-                for i in range(2, randint(4,10)):
-                    lat, lon = uniform(-180.0,180.0), uniform(-180.0, 180.0)
+                for i in range(2, randint(4, 10)):
+                    lat, lon = uniform(-180.0, 180.0), uniform(-180.0, 180.0)
                     xy = (round(lat, 5), round(lon, 5))
                     coords.append(xy)
                 yield coords
 
-
         patience = 3  # seconds.
         waypoints, okays = 0, 0
-    
+
         g = generator()
         start = time.time()
         while time.time() < start + patience:
             precision = randint(4, 8)
-            p = PolylineCodec()
             wp = next(g)
             waypoints += len(wp)
-            polyline = p.encode(wp, precision)
-            wp2 = p.decode(polyline, precision)
+            polyline = self.codec.encode(wp, precision)
+            wp2 = self.codec.decode(polyline, precision)
             if wp == wp2:
                 okays += len(wp2)
             else:
                 for idx, _ in enumerate(wp):
-                    dx, dy = abs(wp[idx][0]-wp2[idx][0]), abs(wp[idx][1]-wp2[idx][1])
-                    if dx > 10**-(precision-1) or dy > 10**-(precision-1):
+                    dx, dy = abs(wp[idx][0] - wp2[idx][0]), abs(wp[idx][1] - wp2[idx][1])
+                    if dx > 10 ** -(precision - 1) or dy > 10 ** -(precision - 1):
                         print("idx={}, dx={}, dy={}".format(idx, dx, dy))
                     else:
                         okays += 1
-    
+
         assert okays == waypoints
-        print("encoded and decoded {:.2f}% correctly for {} waypoints @ {} wp/sec".format(100 * okays / float(waypoints),
-                                                                                          waypoints,
-                                                                                          round(waypoints/patience,0)))
-    
-
-
-
+        print("encoded and decoded {0:.2f}% correctly for {1} waypoints @ {2} wp/sec".format(
+            100 * okays / float(waypoints),
+            waypoints,
+            round(waypoints / patience, 0)))
