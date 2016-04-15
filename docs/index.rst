@@ -1,8 +1,3 @@
-.. polyline documentation master file, created by
-   sphinx-quickstart on Sat Oct 11 16:14:05 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Introduction
 ============
 
@@ -28,9 +23,11 @@ Encoding
 To get the encoded polyline representation of a given set of coordinates::
 
     from polyline.codec import PolylineCodec
-    PolylineCodec().encode([(38.5, -120.2), (40.7, -120.9), (43.2, -126.4)])
+    PolylineCodec().encode([(38.5, -120.2), (40.7, -120.9), (43.2, -126.4)], 5)
 
 This should return ``_p~iF~ps|U_ulL~ugC_hgN~eq`@``.
+
+You can set the required precision with the optional ``precision`` parameter. The default value is 5.
 
 Decoding
 --------

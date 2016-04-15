@@ -3,6 +3,7 @@
 import os
 
 from codecs import open
+from polyline import __version__
 
 try:
     from setuptools import setup
@@ -20,12 +21,14 @@ with open(os.path.join('requirements', 'test.txt'), 'r') as f:
 
 setup(
     name='polyline',
-    version='1.1',
+    version=__version__,
     description=desc,
     long_description=long_desc,
     author='Bruno M. Custódio',
     author_email='bruno@brunomcustodio.com',
-    url='http://pypi.python.org/pypi/polyline/',
+    maintainer='Frederick Jansen',
+    maintainer_email='frederick.jansen@gmail.com',
+    url='https://github.com/frederickjansen/polyline',
     packages=['polyline'],
     install_requires=base_reqs,
     tests_require=test_reqs,
