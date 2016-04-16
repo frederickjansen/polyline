@@ -32,7 +32,7 @@ You can set the required precision with the optional ``precision`` parameter. Th
 Decoding
 --------
 
-To get the set of coordinates reprented by a given encoded polyline string::
+To get a set of coordinates represented by a given encoded polyline string::
 
     from polyline.codec import PolylineCodec
     PolylineCodec().decode('u{~vFvyys@fS]')
