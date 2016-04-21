@@ -6,8 +6,10 @@ class PolylineCodec(object):
     def _pcitr(self, iterable):
         return six.moves.zip(iterable, itertools.islice(iterable, 1, None))
 
-    def _write(self, output, value, factor):
-        coord = int(round(value * factor, 0))
+    def _write(self, output, curr_value, prev_value, factor):
+        curr_value = int(round(curr_value * factor, 0))
+        prev_value = int(round(prev_value * factor, 0))
+        coord = curr_value - prev_value
         coord <<= 1
         coord = coord if coord >= 0 else ~coord
 
@@ -44,11 +46,11 @@ class PolylineCodec(object):
     def encode(self, coordinates, precision=5):
         output, factor = six.StringIO(), float(10 ** precision)
 
-        self._write(output, coordinates[0][0], factor)
-        self._write(output, coordinates[0][1], factor)
+        self._write(output, coordinates[0][0], 0, factor)
+        self._write(output, coordinates[0][1], 0, factor)
 
         for prev, curr in self._pcitr(coordinates):
-            self._write(output, curr[0] - prev[0], factor)
-            self._write(output, curr[1] - prev[1], factor)
+            self._write(output, curr[0], prev[0], factor)
+            self._write(output, curr[1], prev[1], factor)
 
         return output.getvalue()
