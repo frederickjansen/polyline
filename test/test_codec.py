@@ -127,6 +127,13 @@ class PolylineCodecTestCase(unittest.TestCase):
         ])
         self.assertEqual(e, 'gu`wFf`ys@')
 
+    def test_encode_single_point_rounding(self):
+        e = self.codec.encode([
+            (0, 0.000006),
+            (0, 0.000002)
+        ])
+        self.assertEqual(e, '?A?@')
+
     def test_encode_single_point_precision(self):
         e = self.codec.encode([
             (40.641, -8.653)
@@ -142,8 +149,7 @@ class PolylineCodecTestCase(unittest.TestCase):
                 coords = []
                 for i in range(2, randint(4, 10)):
                     lat, lon = uniform(-180.0, 180.0), uniform(-180.0, 180.0)
-                    xy = (round(lat, 5), round(lon, 5))
-                    coords.append(xy)
+                    coords.append((lat, lon))
                 yield coords
 
         patience = 3  # seconds.

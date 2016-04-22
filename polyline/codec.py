@@ -44,7 +44,7 @@ class PolylineCodec(object):
         return coordinates
 
     def encode(self, coordinates, precision=5):
-        output, factor = six.StringIO(), float(10 ** precision)
+        output, factor = six.StringIO(), int(10 ** precision)
 
         self._write(output, coordinates[0][0], 0, factor)
         self._write(output, coordinates[0][1], 0, factor)
