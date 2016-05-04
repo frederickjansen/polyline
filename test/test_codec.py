@@ -2,15 +2,13 @@ import unittest
 from random import uniform, randint
 import time
 
-from polyline.codec import PolylineCodec
+import polyline
 
 
 class PolylineCodecTestCase(unittest.TestCase):
-    def setUp(self):
-        self.codec = PolylineCodec()
 
     def test_decode_multiple_points(self):
-        d = self.codec.decode('gu`wFnfys@???nKgE??gE?????oK????fE??fE')
+        d = polyline.decode('gu`wFnfys@???nKgE??gE?????oK????fE??fE')
         self.assertEqual(d, [
             (40.641, -8.654),
             (40.641, -8.654),
@@ -27,7 +25,7 @@ class PolylineCodecTestCase(unittest.TestCase):
         ])
 
     def test_decode_multiple_points_precision(self):
-        d = self.codec.decode('o}oolA~ieoO???~{Bo}@??o}@?????_|B????n}@??n}@', 6)
+        d = polyline.decode('o}oolA~ieoO???~{Bo}@??o}@?????_|B????n}@??n}@', 6)
         self.assertEqual(d, [
             (40.641, -8.654),
             (40.641, -8.654),
@@ -44,7 +42,7 @@ class PolylineCodecTestCase(unittest.TestCase):
         ])
 
     def test_decode_official_example(self):
-        d = self.codec.decode('_p~iF~ps|U_ulLnnqC_mqNvxq`@')
+        d = polyline.decode('_p~iF~ps|U_ulLnnqC_mqNvxq`@')
         self.assertEqual(d, [
             (38.500, -120.200),
             (40.700, -120.950),
@@ -52,7 +50,7 @@ class PolylineCodecTestCase(unittest.TestCase):
         ])
 
     def test_decode_official_example_precision(self):
-        d = self.codec.decode('_izlhA~rlgdF_{geC~ywl@_kwzCn`{nI', 6)
+        d = polyline.decode('_izlhA~rlgdF_{geC~ywl@_kwzCn`{nI', 6)
         self.assertEqual(d, [
             (38.500, -120.200),
             (40.700, -120.950),
@@ -60,19 +58,19 @@ class PolylineCodecTestCase(unittest.TestCase):
         ])
 
     def test_decode_single_point(self):
-        d = self.codec.decode('gu`wFf`ys@')
+        d = polyline.decode('gu`wFf`ys@')
         self.assertEqual(d, [
             (40.641, -8.653)
         ])
 
     def test_decode_single_point_precision(self):
-        d = self.codec.decode('o}oolAnkcoO', 6)
+        d = polyline.decode('o}oolAnkcoO', 6)
         self.assertEqual(d, [
             (40.641, -8.653)
         ])
 
     def test_encode_multiple_points(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (40.641, -8.654),
             (40.641, -8.654),
             (40.641, -8.656),
@@ -89,7 +87,7 @@ class PolylineCodecTestCase(unittest.TestCase):
         self.assertEqual(e, 'gu`wFnfys@???nKgE??gE?????oK????fE??fE')
 
     def test_encode_multiple_points_precision(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (40.641, -8.654),
             (40.641, -8.654),
             (40.641, -8.656),
@@ -106,7 +104,7 @@ class PolylineCodecTestCase(unittest.TestCase):
         self.assertEqual(e, 'o}oolA~ieoO???~{Bo}@??o}@?????_|B????n}@??n}@')
 
     def test_encode_official_example(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (38.500, -120.200),
             (40.700, -120.950),
             (43.252, -126.453)
@@ -114,7 +112,7 @@ class PolylineCodecTestCase(unittest.TestCase):
         self.assertEqual(e, '_p~iF~ps|U_ulLnnqC_mqNvxq`@')
 
     def test_encode_official_example_precision(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (38.500, -120.200),
             (40.700, -120.950),
             (43.252, -126.453)
@@ -122,20 +120,20 @@ class PolylineCodecTestCase(unittest.TestCase):
         self.assertEqual(e, '_izlhA~rlgdF_{geC~ywl@_kwzCn`{nI')
 
     def test_encode_single_point(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (40.641, -8.653)
         ])
         self.assertEqual(e, 'gu`wFf`ys@')
 
     def test_encode_single_point_rounding(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (0, 0.000006),
             (0, 0.000002)
         ])
         self.assertEqual(e, '?A?@')
 
     def test_encode_single_point_precision(self):
-        e = self.codec.encode([
+        e = polyline.encode([
             (40.641, -8.653)
         ], 6)
         self.assertEqual(e, 'o}oolAnkcoO')
@@ -161,8 +159,8 @@ class PolylineCodecTestCase(unittest.TestCase):
             precision = randint(4, 8)
             wp = next(g)
             waypoints += len(wp)
-            polyline = self.codec.encode(wp, precision)
-            wp2 = self.codec.decode(polyline, precision)
+            poly = polyline.encode(wp, precision)
+            wp2 = polyline.decode(poly, precision)
             if wp == wp2:
                 okays += len(wp2)
             else:

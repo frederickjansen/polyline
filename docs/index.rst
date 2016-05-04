@@ -22,8 +22,8 @@ Encoding
 
 To get the encoded polyline representation of a given set of coordinates::
 
-    from polyline.codec import PolylineCodec
-    PolylineCodec().encode([(38.5, -120.2), (40.7, -120.9), (43.2, -126.4)], 5)
+    import polyline
+    polyline.encode([(38.5, -120.2), (40.7, -120.9), (43.2, -126.4)], 5)
 
 This should return ``_p~iF~ps|U_ulL~ugC_hgN~eq`@``.
 
@@ -34,8 +34,8 @@ Decoding
 
 To get a set of coordinates represented by a given encoded polyline string::
 
-    from polyline.codec import PolylineCodec
-    PolylineCodec().decode('u{~vFvyys@fS]')
+    import polyline
+    polyline.decode('u{~vFvyys@fS]')
 
 This should return ``[(40.63179, -8.65708), (40.62855, -8.65693)]``.
 
