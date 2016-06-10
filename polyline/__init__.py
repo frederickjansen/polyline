@@ -1,6 +1,6 @@
 from .codec import PolylineCodec
 
-__version__ = '1.3'
+__version__ = '1.3.1'
 
 
 def decode(expression, precision=5):
