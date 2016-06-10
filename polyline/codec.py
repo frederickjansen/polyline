@@ -8,6 +8,7 @@ class PolylineCodec(object):
         return six.moves.zip(iterable, itertools.islice(iterable, 1, None))
 
     def _py2_round(self, x):
+        # The polyline algorithm uses Python 2's way of rounding
         return int(math.copysign(math.floor(math.fabs(x) + 0.5), x))
 
     def _write(self, output, curr_value, prev_value, factor):
@@ -26,7 +27,7 @@ class PolylineCodec(object):
     def _trans(self, value, index):
         byte, result, shift = None, 0, 0
 
-        while (byte is None or byte >= 0x20):
+        while byte is None or byte >= 0x20:
             byte = ord(value[index]) - 63
             index += 1
             result |= (byte & 0x1f) << shift
@@ -38,7 +39,7 @@ class PolylineCodec(object):
     def decode(self, expression, precision=5):
         coordinates, index, lat, lng, length, factor = [], 0, 0, 0, len(expression), float(10 ** precision)
 
-        while (index < length):
+        while index < length:
             lat_change, index = self._trans(expression, index)
             lng_change, index = self._trans(expression, index)
             lat += lat_change

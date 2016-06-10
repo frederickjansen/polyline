@@ -28,7 +28,7 @@ setup(
     author_email='bruno@brunomcustodio.com',
     maintainer='Frederick Jansen',
     maintainer_email='frederick.jansen@gmail.com',
-    url='https://github.com/frederickjansen/polyline',
+    url='https://github.com/hicsail/polyline',
     packages=['polyline'],
     install_requires=base_reqs,
     tests_require=test_reqs,
