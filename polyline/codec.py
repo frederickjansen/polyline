@@ -1,14 +1,18 @@
 import itertools
 import six
+import math
 
 
 class PolylineCodec(object):
     def _pcitr(self, iterable):
         return six.moves.zip(iterable, itertools.islice(iterable, 1, None))
 
+    def _py2_round(self, x):
+        return int(math.copysign(math.floor(math.fabs(x) + 0.5), x))
+
     def _write(self, output, curr_value, prev_value, factor):
-        curr_value = int(round(curr_value * factor, 0))
-        prev_value = int(round(prev_value * factor, 0))
+        curr_value = self._py2_round(curr_value * factor)
+        prev_value = self._py2_round(prev_value * factor)
         coord = curr_value - prev_value
         coord <<= 1
         coord = coord if coord >= 0 else ~coord

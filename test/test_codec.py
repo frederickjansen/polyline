@@ -132,6 +132,13 @@ class PolylineCodecTestCase(unittest.TestCase):
         ])
         self.assertEqual(e, '?A?@')
 
+    def test_rounding_py3_match_py2(self):
+        e = polyline.encode([
+            (36.05322, -112.084004),
+            (36.053573, -112.083914),
+            (36.053845, -112.083965)])
+        self.assertEqual(e, 'ss`{E~kbkTeAQw@J')
+
     def test_encode_single_point_precision(self):
         e = polyline.encode([
             (40.641, -8.653)
