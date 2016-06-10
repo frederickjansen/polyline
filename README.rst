@@ -1,8 +1,8 @@
 polyline
 ========
 
-.. image:: http://img.shields.io/travis/frederickjansen/polyline.svg?style=flat
-    :target: https://travis-ci.org/frederickjansen/polyline
+.. image:: http://img.shields.io/travis/hicsail/polyline.svg?style=flat
+    :target: https://travis-ci.org/hicsail/polyline
 
 .. image:: http://img.shields.io/pypi/v/polyline.svg?style=flat
     :target: https://pypi.python.org/pypi/polyline/
@@ -14,4 +14,4 @@ polyline
 Format (http://goo.gl/PvXf8Y). It is essentially a port of
 https://github.com/mapbox/polyline built with Python 2 and 3 support in mind.
 
-The documentation for ``polyline`` can be found at https://github.com/frederickjansen/polyline/blob/master/docs/index.rst.
+The documentation for ``polyline`` can be found at https://github.com/hicsail/polyline/blob/master/docs/index.rst.
