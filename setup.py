@@ -3,7 +3,15 @@
 import os
 
 from codecs import open
-from polyline import __version__
+
+# Parse the version from the module without importing
+with open('polyline/__init__.py') as f:
+    for line in f:
+        if line.find("__version__") >= 0:
+            version = line.split("=")[1].strip()
+            version = version.strip('"')
+            version = version.strip("'")
+            continue
 
 try:
     from setuptools import setup
@@ -21,7 +29,7 @@ with open(os.path.join('requirements', 'test.txt'), 'r') as f:
 
 setup(
     name='polyline',
-    version=__version__,
+    version=version,
     description=desc,
     long_description=long_desc,
     author='Bruno M. Custódio',
