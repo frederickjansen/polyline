@@ -8,10 +8,8 @@ from codecs import open
 with open('polyline/__init__.py') as f:
     for line in f:
         if line.find("__version__") >= 0:
-            version = line.split("=")[1].strip()
-            version = version.strip('"')
-            version = version.strip("'")
-            continue
+            version = line.split("=")[1].strip().strip('"').strip("'")
+            break
 
 try:
     from setuptools import setup
