@@ -183,3 +183,19 @@ class PolylineCodecTestCase(unittest.TestCase):
             100 * okays / float(waypoints),
             waypoints,
             round(waypoints / patience, 0)))
+
+
+    def test_encode_py35valid(self):
+        e = polyline.encode([
+            (-112.084004, 36.05322),
+            (-112.083914, 36.053573),
+            (-112.083965, 36.053845)])
+        self.assertEqual(e, '~kbkTss`{EQeAHw@')
+
+
+    def test_encode_py27valid(self):
+        e = polyline.encode([
+            (-112.084004, 36.05322),
+            (-112.083914, 36.053573),
+            (-112.083965, 36.053845)])
+        self.assertEqual(e, '~kbkTss`{EQeAJw@')
