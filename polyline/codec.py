@@ -48,18 +48,6 @@ class PolylineCodec(object):
 
         return coordinates
 
-    def decode_lonlat(self, expression, precision=5):
-        coordinates, index, lat, lng, length, factor = [], 0, 0, 0, len(expression), float(10 ** precision)
-
-        while index < length:
-            lat_change, index = self._trans(expression, index)
-            lng_change, index = self._trans(expression, index)
-            lat += lat_change
-            lng += lng_change
-            coordinates.append((lng / factor, lat / factor))
-
-        return coordinates
-
     def encode(self, coordinates, precision=5):
         output, factor = six.StringIO(), int(10 ** precision)
 
@@ -69,17 +57,5 @@ class PolylineCodec(object):
         for prev, curr in self._pcitr(coordinates):
             self._write(output, curr[0], prev[0], factor)
             self._write(output, curr[1], prev[1], factor)
-
-        return output.getvalue()
-
-    def encode_lonlat(self, coordinates, precision=5):
-        output, factor = six.StringIO(), int(10 ** precision)
-
-        self._write(output, coordinates[0][1], 0, factor)
-        self._write(output, coordinates[0][0], 0, factor)
-
-        for prev, curr in self._pcitr(coordinates):
-            self._write(output, curr[1], prev[1], factor)
-            self._write(output, curr[0], prev[0], factor)
 
         return output.getvalue()
