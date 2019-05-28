@@ -39,7 +39,7 @@ def encode(coordinates, precision=5):
     return PolylineCodec().encode(coordinates, precision)
 
 
-def encode_lonlat(coordinates, precision=5):
+def encode_lotlat(coordinates, precision=5):
     """
     Encode a set of lonlat coordinates in a polyline string.
 
@@ -51,4 +51,4 @@ def encode_lonlat(coordinates, precision=5):
     return PolylineCodec().encode_lonlat(coordinates, precision)
 
 
-__all__ = ['decode', 'decode_lonlat', 'encode', 'encode_lonlat']
+__all__ = ['decode', 'decode_lonlat', 'encode', 'encode_lotlat']
