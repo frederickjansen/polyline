@@ -35,6 +35,8 @@ This should return ``_p~iF~ps|U_ulL~ugC_hgN~eq`@``.
 
 You can set the required precision with the optional ``precision`` parameter. The default value is 5.
 
+You can encode lon-lat tuples by setting ``geojson=True``.
+
 Decoding
 --------
 
@@ -44,3 +46,5 @@ To get a set of coordinates represented by a given encoded polyline string::
     polyline.decode('u{~vFvyys@fS]')
 
 This should return ``[(40.63179, -8.65708), (40.62855, -8.65693)]``.
+
+You can decode into lon-lat tuples by setting ``geojson=True``.

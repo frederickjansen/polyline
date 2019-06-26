@@ -36,7 +36,7 @@ class PolylineCodec(object):
 
         return ~(result >> 1) if comp else (result >> 1), index
 
-    def decode(self, expression, precision=5):
+    def decode(self, expression, precision=5, geojson=False):
         coordinates, index, lat, lng, length, factor = [], 0, 0, 0, len(expression), float(10 ** precision)
 
         while index < length:
@@ -46,9 +46,15 @@ class PolylineCodec(object):
             lng += lng_change
             coordinates.append((lat / factor, lng / factor))
 
+        if geojson is True:
+            coordinates = [t[::-1] for t in coordinates]
+
         return coordinates
 
-    def encode(self, coordinates, precision=5):
+    def encode(self, coordinates, precision=5, geojson=False):
+        if geojson is True:
+            coordinates = [t[::-1] for t in coordinates]
+
         output, factor = six.StringIO(), int(10 ** precision)
 
         self._write(output, coordinates[0][0], 0, factor)
