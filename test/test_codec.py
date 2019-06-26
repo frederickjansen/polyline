@@ -49,6 +49,14 @@ class PolylineCodecTestCase(unittest.TestCase):
             (43.252, -126.453)
         ])
 
+    def test_decode_geojson(self):
+        d = polyline.decode('_p~iF~ps|U_ulLnnqC_mqNvxq`@', geojson=True)
+        self.assertEqual(d, [
+            (-120.200, 38.500),
+            (-120.950, 40.700),
+            (-126.453, 43.252)
+        ])
+
     def test_decode_official_example_precision(self):
         d = polyline.decode('_izlhA~rlgdF_{geC~ywl@_kwzCn`{nI', 6)
         self.assertEqual(d, [
@@ -109,6 +117,14 @@ class PolylineCodecTestCase(unittest.TestCase):
             (40.700, -120.950),
             (43.252, -126.453)
         ])
+        self.assertEqual(e, '_p~iF~ps|U_ulLnnqC_mqNvxq`@')
+
+    def test_encode_geojson(self):
+        e = polyline.encode([
+            (-120.200, 38.500),
+            (-120.950, 40.700),
+            (-126.453, 43.252)
+        ], geojson=True)
         self.assertEqual(e, '_p~iF~ps|U_ulLnnqC_mqNvxq`@')
 
     def test_encode_official_example_precision(self):
@@ -178,7 +194,7 @@ class PolylineCodecTestCase(unittest.TestCase):
                     else:
                         okays += 1
 
-        assert okays == waypoints
+        self.assertEqual(okays, waypoints)
         print("encoded and decoded {0:.2f}% correctly for {1} waypoints @ {2} wp/sec".format(
             100 * okays / float(waypoints),
             waypoints,
