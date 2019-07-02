@@ -13,3 +13,10 @@ unit-tests:
 reqs: setup-base-dependencies setup-test-dependencies
 
 test: pep8-tests unit-tests
+
+publish:
+	pip install 'twine>=1.5.0'
+	pip install wheel
+	python setup.py sdist bdist_wheel --universal
+	twine upload dist/*
+	rm -fr build dist .egg requests.egg-info
