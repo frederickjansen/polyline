@@ -43,8 +43,10 @@ Decoding
 To get a set of coordinates represented by a given encoded polyline string::
 
     import polyline
-    polyline.decode('u{~vFvyys@fS]')
+    polyline.decode('u{~vFvyys@fS]', 5)
 
 This should return ``[(40.63179, -8.65708), (40.62855, -8.65693)]`` in (lat, lon) order.
+
+You can set the required precision with the optional ``precision`` parameter. The default value is 5.
 
 You can decode into (lon, lat) tuples by setting ``geojson=True``.
