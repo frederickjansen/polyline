@@ -20,8 +20,6 @@ desc = "A Python implementation of Google's Encoded Polyline Algorithm Format."
 
 with open('README.rst', 'r') as f:
     long_desc = f.read()
-with open(os.path.join('requirements', 'base.txt'), 'r') as f:
-    base_reqs = f.readlines()
 with open(os.path.join('requirements', 'test.txt'), 'r') as f:
     test_reqs = f.readlines()
 
@@ -36,7 +34,6 @@ setup(
     maintainer_email='frederick.jansen@gmail.com',
     url='https://github.com/hicsail/polyline',
     packages=['polyline'],
-    install_requires=base_reqs,
     tests_require=test_reqs,
     test_suite='nose.collector',
     license='MIT',
