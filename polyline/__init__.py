@@ -1,6 +1,6 @@
 from .codec import PolylineCodec
 
-__version__ = '1.4.0'
+__version__ = '2.0.0'
 
 
 def decode(expression, precision=5, geojson=False):

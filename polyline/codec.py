@@ -1,11 +1,11 @@
+import io
 import itertools
-import six
 import math
 
 
 class PolylineCodec(object):
     def _pcitr(self, iterable):
-        return six.moves.zip(iterable, itertools.islice(iterable, 1, None))
+        return zip(iterable, itertools.islice(iterable, 1, None))
 
     def _py2_round(self, x):
         # The polyline algorithm uses Python 2's way of rounding
@@ -19,10 +19,10 @@ class PolylineCodec(object):
         coord = coord if coord >= 0 else ~coord
 
         while coord >= 0x20:
-            output.write(six.unichr((0x20 | (coord & 0x1f)) + 63))
+            output.write(chr((0x20 | (coord & 0x1f)) + 63))
             coord >>= 5
 
-        output.write(six.unichr(coord + 63))
+        output.write(chr(coord + 63))
 
     def _trans(self, value, index):
         byte, result, shift = None, 0, 0
@@ -55,7 +55,7 @@ class PolylineCodec(object):
         if geojson is True:
             coordinates = [t[::-1] for t in coordinates]
 
-        output, factor = six.StringIO(), int(10 ** precision)
+        output, factor = io.StringIO(), int(10 ** precision)
 
         self._write(output, coordinates[0][0], 0, factor)
         self._write(output, coordinates[0][1], 0, factor)
