@@ -1,9 +1,6 @@
 polyline
 ========
 
-.. image:: http://img.shields.io/travis/hicsail/polyline.svg?style=flat
-    :target: https://travis-ci.org/hicsail/polyline
-
 .. image:: http://img.shields.io/pypi/v/polyline.svg?style=flat
     :target: https://pypi.python.org/pypi/polyline/
 
