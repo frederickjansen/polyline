@@ -8,7 +8,7 @@ pep8-tests:
 	flake8 --ignore=E128,E501 polyline
 
 unit-tests:
-	nosetests
+	pytest .
 
 reqs: setup-base-dependencies setup-test-dependencies
 
