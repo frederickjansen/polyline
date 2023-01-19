@@ -1,0 +1,45 @@
+[project]
+name = "polyline"
+version = "2.0.0"
+description = """
+    A Python implementation of Google's Encoded Polyline Algorithm Format.
+    """
+license = {file = "LICENSE"}
+authors = [
+    {name = "Frederick Jansen"},
+    {name = "Bruno M. Custódio"},
+]
+readme = "README.rst"
+requires-python = ">=3.7"
+
+dependencies = [
+]
+
+[project.urls]
+homepage = "https://github.com/frederickjansen/polyline"
+repository = "https://github.com/frederickjansen/polyline"
+
+[project.optional-dependencies]
+dev = [
+    "pytest~=7.0",
+    "pytest-cov~=4.0",
+    "pylint~=2.15.10",
+    "sphinx~=4.2.0",
+    "sphinx-rtd-theme~=1.0.0",
+    "toml~=0.10.2",
+]
+publish = [
+    "build~=0.8",
+    "twine~=4.0"
+]
+
+[build-system]
+requires = [
+    "build~=0.8",
+    "setuptools~=65.0",
+    "wheel~=0.37"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --ignore=docs --cov=polyline --cov-report term-missing"

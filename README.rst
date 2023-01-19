@@ -1,11 +1,14 @@
 polyline
 ========
 
-.. image:: http://img.shields.io/travis/hicsail/polyline.svg?style=flat
-    :target: https://travis-ci.org/hicsail/polyline
-
 .. image:: http://img.shields.io/pypi/v/polyline.svg?style=flat
     :target: https://pypi.python.org/pypi/polyline/
+.. image:: https://readthedocs.org/projects/polyline/badge/?version=v1.1
+    :target: https://polyline.readthedocs.io/en/v1.1/?badge=v1.1
+    :alt: Documentation Status
+.. image:: https://github.com/frederickjansen/polyline/actions/workflows/lint-test-docs.yml/badge.svg
+    :target: https://github.com/frederickjansen/polyline/actions/workflows/lint-test-docs.yml
+    :alt: Build
 
 ``polyline`` is a Python implementation of Google's Encoded Polyline Algorithm
 Format (http://goo.gl/PvXf8Y). It is essentially a port of
@@ -14,11 +17,9 @@ https://github.com/mapbox/polyline built with Python 2 and 3 support in mind.
 Installation
 ============
 
-``polyline`` can be installed using ``pip`` or ``easy_install``::
+``polyline`` can be installed using ``pip``::
 
     $ pip install polyline
-    or
-    $ easy_install polyline
 
 API Documentation
 =================
