@@ -4,6 +4,7 @@ A Python implementation of Google's Encoded Polyline Algorithm Format.
 import io
 import itertools
 import math
+from typing import List
 
 
 def _pcitr(iterable):
@@ -43,7 +44,7 @@ def _trans(value, index):
     return ~(result >> 1) if comp else (result >> 1), index
 
 
-def decode(expression: str, precision: int = 5, geojson: bool = False) -> list[tuple[float, float]]:
+def decode(expression: str, precision: int = 5, geojson: bool = False) -> List[tuple[float, float]]:
     """
     Decode a polyline string into a set of coordinates.
 
@@ -68,7 +69,7 @@ def decode(expression: str, precision: int = 5, geojson: bool = False) -> list[t
     return coordinates
 
 
-def encode(coordinates: list[tuple[float, float]], precision: int = 5, geojson: bool = False) -> str:
+def encode(coordinates: List[tuple[float, float]], precision: int = 5, geojson: bool = False) -> str:
     """
     Encode a set of coordinates in a polyline string.
 
