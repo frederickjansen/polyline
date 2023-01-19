@@ -180,7 +180,6 @@ def test_encode_single_point_precision():
     e = polyline.encode([
         (40.6411233123, -8.6533214234)
     ], 6)
-    polyline.encode([], 4, False)
     assert e == 'eepolAp_doO'
 
 
