@@ -22,8 +22,8 @@ dev = [
     "pytest~=7.0",
     "pytest-cov~=4.0",
     "pylint~=2.15.10",
-    "sphinx~=4.2.0",
-    "sphinx-rtd-theme~=1.0.0",
+    "sphinx~=5.3.0",
+    "sphinx-rtd-theme~=1.2.0",
     "toml~=0.10.2",
 ]
 publish = [
