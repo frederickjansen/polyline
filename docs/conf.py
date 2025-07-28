@@ -19,9 +19,12 @@ sys.path.insert(0, os.path.abspath('../src'))
 
 # The name and version are retrieved from ``pyproject.toml`` in the root
 # directory.
-import toml
-with open('../pyproject.toml') as pyproject_file:
-    pyproject_data = toml.load(pyproject_file)
+try:
+   import tomllib
+except ImportError:
+   import tomli as tomllib
+with open('../pyproject.toml', 'rb') as pyproject_file:
+    pyproject_data = tomllib.load(pyproject_file)
 project = pyproject_data['project']['name']
 version = pyproject_data['project']['version']
 release = version
