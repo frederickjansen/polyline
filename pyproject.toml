@@ -2,8 +2,7 @@
 name = "polyline"
 version = "2.0.4"
 description = "A Python implementation of Google's Encoded Polyline Algorithm Format."
-license = "MIT"
-license-files = ["LICENSE"]
+license = {file = "LICENSE"}
 authors = [
     {name = "Frederick Jansen"},
     {name = "Bruno M. Custódio"},
@@ -35,7 +34,7 @@ publish = [
 
 [build-system]
 requires = [
-    "setuptools>=75.0"
+    "setuptools>=69.0"
 ]
 build-backend = "setuptools.build_meta"
 
