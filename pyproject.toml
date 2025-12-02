@@ -35,7 +35,7 @@ publish = [
 
 [build-system]
 requires = [
-    "setuptools>=69.0"
+    "setuptools>=80.0"
 ]
 build-backend = "setuptools.build_meta"
 
