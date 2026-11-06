@@ -155,6 +155,12 @@ def test_encode_single_point():
     assert e == 'ux`wF~bys@'
 
 
+def test_encode_empty():
+    assert polyline.encode([]) == ''
+    assert polyline.encode([], geojson=True) == ''
+    assert polyline.decode(polyline.encode([])) == []
+
+
 def test_encode_single_point_rounding():
     e = polyline.encode([
         (0, 0.000006),
