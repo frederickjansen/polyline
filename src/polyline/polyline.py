@@ -80,6 +80,9 @@ def encode(coordinates: List[Tuple[float, float]], precision: int = 5, geojson: 
     :param geojson: Set to True in order to encode (lon, lat) tuples.
     :return: The encoded polyline string.
     """
+    if len(coordinates) == 0:
+        return ''
+
     if geojson is True:
         coordinates = [t[::-1] for t in coordinates]
 
